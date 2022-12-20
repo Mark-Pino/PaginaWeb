@@ -15,4 +15,8 @@ router.get('/nosotros', function(req, res, next) {
   res.render('nosotros');
 });
 
+router.get('/contactos', function(req, res, next) {
+  res.render('contactos');
+});
+
 module.exports = router;
