@@ -11,4 +11,8 @@ router.get('/personal', function(req, res, next) {
   res.render('personal');
 });
 
+router.get('/nosotros', function(req, res, next) {
+  res.render('nosotros');
+});
+
 module.exports = router;
