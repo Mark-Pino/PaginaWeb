@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/index.min.css" />
+    <link rel="shortcut icon" href="images/favicon.ico" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <title>Atencion Cliente</title>
+  </head>
+  <body>
+    <%- include('../partials/fondo'); %>
+    <div class="">
+        <% if (usercli) { %>
+        <div class="">
+            <div class="px-4 md:px-10 mx-auto w-full">
+                <div class="block p-6 rounded-lg shadow-lg bg-white max-w-md container m-auto mt-6">
+                    <form action="/saveAtencion" method="POST">
+                        <input id="cli_id" name="cli_id" value="<%= usercli.cli_id %>" hidden>
+                      <div class="grid grid-cols-3 gap-4">
+                        <div class="form-group mb-6">
+                            <input type="number" class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="at_cli_id" name="at_cli_id" value="<%= usercli.cli_id %>" placeholder="ID cliente">
+                          </div>
+                        <div class="form-group mb-6">
+                          <input type="text" class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="cli_nombre" name="cli_nombre" value="<%= usercli.cli_nombre %>" placeholder="Nombre">
+                        </div>
+                        <div class="mb-3">
+                            <select name="at_tra_id" id="at_tra_id" class="form-select">
+                                <option value="1" >trabajador</option>
+                                <option value="1" >Christian</option>
+                                <option value="2" >Katerine</option>
+                            </select>
+                        </div>
+                      </div>
+                      <div class="grid grid-cols-2 gap-4">
+                      <div class="form-group mb-6">
+                        <input type="date" class="form-control  block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="at_fecha"  name="at_fecha" placeholder="Fecha">
+                      </div>
+                      <div class="form-group mb-6">
+                        <input type="number" class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300rounded transition ease-in-out m-at_number focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="at_numero" name="at_numero" placeholder="Numero de atencion">
+                      </div>
+                    </div>
+                      <div class="form-group mb-6">
+                        <input type="text" class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-at_number focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="at_motivo" name="at_motivo" placeholder="Motivo">
+                      </div>
+                      <div class="form-group mb-6">
+                        <input type="text" class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-at_number focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="at_observacion" name="at_observacion" placeholder="Observacion">
+                      </div>
+
+                      <div class="grid grid-cols-2 gap-4">
+                      <button  type="submit" class=" w-full px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out text-center" tabindex="5"> GUARDAR</button>
+                        <a href="/pacientes" type="submit" class=" w-full px-6 py-2.5 bg-gray-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-200 hover:shadow-lg focus:bg-gray-200 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-300 active:shadow-lg transition duration-150 ease-in-out text-center"> CANCELAR</a>
+                    </div>
+                    </form>
+                  </div>
+            </div>
+        </div>
+        <% } %>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+  </body>
+</html>

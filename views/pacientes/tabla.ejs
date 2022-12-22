@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" class="antialiased">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>DataTables </title>
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<link href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css" rel=" stylesheet">
+	<!--Replace with your tailwind.css once created-->
+	<!--Regular Datatables CSS-->
+	<link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
+	<!--Responsive Extension Datatables CSS-->
+	<link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="stylesheets/tablas.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body class="bg-gray-100 text-gray-900 tracking-wider leading-normal">
+	<!--Container-->
+	<div class="container w-full md:w-4/5 xl:w-3/5  mx-auto px-2">
+		<!--Title-->
+		<h1 class="flex items-center font-sans font-bold break-normal text-white px-2 py-8 text-xl md:text-2xl">
+			Lista de Pacientes
+		</h1>
+		<!--Card-->
+		<div id='recipients' class="p-8 mt-6 lg:mt-0 rounded shadow bg-white">
+			<a href="/crearPacientes" class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline text-teal-500 border-teal-500 hover:bg-blue-500 hover:text-white bg-white"><i class="fa-solid fa-hospital-user"></i></a>
+			<table id="example" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
+				<thead>
+                    <tr class="bg-primary">
+                        <th scope="col">ID</th>
+                        <th scope="col">NOMBRE</th>
+                        <th scope="col">DNI</th>
+                        <th scope="col">PESO</th>
+                        <th scope="col">TALLA</th>
+                        <th scope="col">SEXO</th>
+                        <th scope="col">TIPO</th>
+                        <th scope="col">ACCIONES</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% results.forEach((usercli)=> { %>
+                    <tr>
+                        <td><%= usercli.cli_id %></td>
+                        <td><%= usercli.cli_nombre %></td>
+                        <td><%= usercli.cli_nro_documento %></td>
+                        <td><%= usercli.cli_peso %></td>
+                        <td><%= usercli.cli_talla %></td>
+                        <td><%= usercli.cli_sexo %></td>
+                        <td><%= usercli.cli_tipo_persona %></td>
+                        <td>
+                            <a href="/editarPacientes/<%= usercli.cli_id %>" class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline text-teal-500 border-teal-500 hover:bg-blue-500 hover:text-white bg-white"><i class="fa-solid fa-user-pen"></i></a>
+                            <a href="/crearAtencion/<%= usercli.cli_id %>" class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline text-teal-500 border-teal-500 hover:bg-blue-500 hover:text-white bg-white"><i class="fa-sharp fa-solid fa-clipboard-user"></i></a>
+							<a href="/eliminarPacientes/<%= usercli.cli_id %>" class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline text-teal-500 border-teal-500 hover:bg-red-500 hover:text-white bg-white"><i class="fa-solid fa-trash"></i></a>
+						</td>
+                    </tr>
+                <% }) %>
+                </tbody>
+			</table>
+		</div>
+		<!--/Card-->
+	</div>
+	<!--/container-->
+	<!-- jQuery -->
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<!--Datatables -->
+	<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+	<script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.16/dist/sweetalert2.all.min.js"></script>
+	<script>
+		$(document).ready(function() {
+			var table = $('#example').DataTable({
+					responsive: true,
+					pageLength: 5,
+					lengthMenu: [[5,10,20,-1], [5,10,20,'todos']]
+
+				})
+				.columns.adjust()
+				.responsive.recalc();
+		});
+	</script>
+</body>
+</html>
