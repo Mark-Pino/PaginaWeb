@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+   <head>
+     <meta charset="utf-8">
+     <title>Action Menu Button</title>
+     <link rel="stylesheet" href="stylesheets/logOut.css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+   </head>
+   <body>
+     <div class="action z-30">
+       <div class="profile" onclick="menuToggle();">
+         <img src="images/pic-2.png">
+       </div>
+       <div class="menu">
+         <h3>Nombre Apellido<br><span>Enfermera</span></h3>
+         <ul>
+            <li><img src="images/1l.png"><a href="/dashboard">Dashboard</a></li>
+            <li><img src="images/1l.png"><a href="/usuarios">Usuarios</a></li>
+            <li><img src="images/1l.png"><a href="/eventos">Eventos</a></li>
+            <li><img src="images/1l.png"><a href="/graficas">Graficas</a></li>
+            <li><img src="images/1l.png"><a href="/reportes">Reportes</a></li>
+            <li><img src="images/1l.png"><a href="/stock">Stock</a></li>
+            <li><img src="images/1l.png"><a href="/pacientes">Atención Medica</a></li>
+            <li><img src="images/1l.png"><a href="/configuracion">Configuración</a></li>
+            <li><img src="images/1l.png"><a href="/">Cerrar Sesión</a></li>
+        </ul>          
+       </div>
+     </div>
+     <script>
+        function menuToggle(){
+            const toggleMenu = document.querySelector('.menu');
+            toggleMenu.classList.toggle('active')
+        }
+     </script>
+   </body>
+</html>

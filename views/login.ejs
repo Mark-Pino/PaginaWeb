@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<!-- Created By CodingNepal -->
+<html lang="en" dir="ltr">
+   <head>
+      <meta charset="utf-8">
+      <title>Login</title>
+      <link rel="stylesheet" href="stylesheets/login.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+      <link rel="shortcut icon" href="images/favicon.ico" />
+   </head>
+   <body>
+      <div class="center">
+         <input type="checkbox" id="show">
+         <label for="show" class="show-btn">Ver LogIn</label>
+         <div class="container">
+            <label for="show" class="close-btn fas fa-times" title="close"></label>
+            <div class="text">
+               Login
+            </div>
+            <!-- Inicio Error -->
+            <div>
+               <% if (messages.error) { %>
+                 <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                   <strong class="font-bold"><%- messages.error %></strong>
+                 </div>
+                 <% } %>
+             </div>
+             <!-- Fin Error -->
+
+            <form action="/checklogin" method="post">   
+                
+               <div class="data relative w-full mb-3">
+                  <label class="block uppercase"
+                  for="grid-password">Email</label>
+                  <input type="email"
+                  placeholder="Email"
+                  style="transition: all 0.15s ease 0s;"
+                  name="email" 
+                  required>
+               </div>
+
+               <div class="data relative w-full mb-3">
+                  <label class="block uppercase"
+                  for="grid-password">Password</label>
+                  <input type="password" placeholder="Password"
+                  style="transition: all 0.15s ease 0s;"
+                  name="password"required>
+               </div>
+               
+               <div class="btn">
+                  <div class="inner"></div>
+                  <button type="submit" type="button"
+                  style="transition: all 0.15s ease 0s;">login</button>
+               </div>
+
+               <div class="signup-link">
+                  <a href="/">Retornar al Inicio?</a>
+               </div>
+            </form>
+         </div>
+      </div>
+   </body>
+</html>
