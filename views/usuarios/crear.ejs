@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" class="antialiased">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>DataTables </title>
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<link href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css" rel=" stylesheet">
+	<link rel="shortcut icon" href="images/favicon.ico" />
+</head>
+<body>
+  <%- include('../partials/sidebar'); %>
+	<%- include('../partials/fondo'); %>
+    <div class="">
+        <div class="">
+            <div class="px-4 md:px-10 mx-auto w-full">
+                <div class="block p-6 rounded-lg shadow-lg bg-white max-w-md container m-auto mt-6">
+                    <form action="/saveUsuarios" method="POST">
+                      <div class="grid grid-cols-2 gap-4">
+                        <div class="form-group mb-6">
+                          <input type="text" class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="tra_nombre" name="tra_nombre" placeholder="Nombre">
+                        </div>
+                        <div class="form-group mb-6">
+                            <input type="number" class="form-control  block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="tra_nro_documento"  name="tra_nro_documento" placeholder="DNI">
+                          </div>
+                        <div class="form-group mb-6">
+                          <input type="text" class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="tra_ap_paterno" name="tra_ap_paterno" placeholder="Apellido Paterno">
+                        </div>
+                        <div class="form-group mb-6">
+                            <input type="text" class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="tra_ap_materno" name="tra_ap_materno" placeholder="Apellido Materno">
+                          </div>
+                      </div>
+                      <div class="form-group mb-6">
+                        <input type="text" class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="tra_direccion" name="tra_direccion" placeholder="Direccion">
+                      </div>
+                      <div class="form-group mb-6">
+                        <input type="number" class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="tra_telefono" name="tra_telefono" placeholder="Celular">
+                      </div>
+                      <div class="grid grid-cols-2 gap-4">
+                        <div class="form-group mb-6">
+                          <input type="email" class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="email" name="email" placeholder="Email">
+                        </div>
+                        <div class="form-group mb-6">
+                            <input type="password" class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="password" name="password"  placeholder="Contraseña">
+                          </div>
+                      </div>
+                      <div class="grid grid-cols-2 gap-4">
+                      <button type="submit" class=" w-full px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out" tabindex="5">
+                        Guardar</button>
+                        <a  href="/usuarios" type="submit" class="w-full px-6 py-2.5 bg-gray-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out">
+                        Cancelar</a>
+                    </div>
+                    </form>
+                  </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</body>
+</html>

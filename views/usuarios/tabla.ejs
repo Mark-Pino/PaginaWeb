@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" class="antialiased">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>DataTables </title>
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<link href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css" rel=" stylesheet">
+	<!--Replace with your tailwind.css once created-->
+	<!--Regular Datatables CSS-->
+	<link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
+	<!--Responsive Extension Datatables CSS-->
+	<link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="stylesheets/tablas.css">
+	<link rel="shortcut icon" href="images/favicon.ico" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.3.2/css/buttons.bootstrap.css" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.min.js" integrity="sha512-1/RvZTcCDEUjY/CypiMz+iqqtaoQfAITmNSJY17Myp4Ms5mdxPS5UV7iOfdZoxcGhzFbOm6sntTKJppjvuhg4g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body class="bg-gray-100 text-gray-900 tracking-wider leading-normal">
+	<!--Container-->
+	<div class="container w-full md:w-4/5 xl:w-3/5  mx-auto px-2">
+		<!--Title-->
+		<h1 class="flex items-center font-sans font-bold break-normal text-white px-2 py-8 text-xl md:text-2xl">
+			Lista de Usuarios
+		</h1>
+
+		<!--Card-->
+		<div id='recipients' class="p-8 mt-6 lg:mt-0 rounded shadow bg-white">
+			<a href="/crearUsuarios" class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline text-teal-500 border-teal-500 hover:bg-blue-500 hover:text-white bg-white"><i class="fa-solid fa-user-plus"></i></a>
+			<a href="/export-excel" class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline text-teal-500 border-teal-500 hover:bg-blue-500 hover:text-white bg-white"><i class="fa-solid fa-file-excel"></i></a>
+			<table id="example" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
+				<thead>
+					<tr class="bg-primary">
+						<th scope="col">ID</th>
+						<th scope="col">NOMBRE</th>
+						<th scope="col">AP PATERNO</th>
+						<th scope="col">AP PATERNO</th>
+						<th scope="col">TELEFONO</th>
+						<th scope="col">ACCIONES</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% results.forEach((user)=> { %>  
+						<tr>
+							<td><%= user.id %></td>
+							<td><%= user.tra_nombre %></td>
+							<td><%= user.tra_ap_paterno %></td>
+							<td><%= user.tra_ap_materno %></td>
+							<td><%= user.tra_telefono %></td>
+							<td>
+								<a href="/editarUsuarios/<%= user.id %>" class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline text-teal-500 border-teal-500 hover:bg-blue-500 hover:text-white bg-white"><i class="fa-solid fa-user-pen"></i></a>
+								<a href="/eliminarUsuarios/<%= user.id %>" onclick="return confirm('¿Estas seguro que quieres eliminar?')" class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline text-teal-500 border-teal-500 hover:bg-red-600 hover:text-white bg-white"><i class="fa-solid fa-user-xmark"></i></a>
+							</td>
+						</tr>
+					<% }) %>
+				</tbody>
+			</table>
+		</div>
+		
+		<!--/Card-->
+	</div>
+	<!--/container-->
+	<!-- jQuery -->
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<!--Datatables -->
+	<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+	<script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.16/dist/sweetalert2.all.min.js"></script>
+	<!-- Para usar Los botones -->
+	<script src="https://cdn.datatables.net/buttons/1.6.5/js/dataTables.buttons.min.js"></script>
+	<script src= "https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.m min.js"></script>>
+	<script src="https://cdn.datatables.net/buttons/1.6.5/js/buttons.htm15.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/datatables-buttons-excel-styles@1.2.0/js/buttons.html5.styles.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/datatables-buttons-excel-styles@1.2.0/js/buttons.html5.styles.templates.min.js"></script>
+	<script>
+		$(document).ready(function() {
+			var table = $('#example').DataTable({
+					responsive: true,
+					pageLength: 5,
+					lengthMenu: [[5,10,20,-1], [5,10,20,'todos']]
+
+				})
+				.columns.adjust()
+				.responsive.recalc();
+		});
+	</script>
+	<script>
+		function confirmar(id){
+			Swal.fire({
+			title: 'Confrirmar eliminar el registro',
+			icon: 'warning',
+			showCancelButton: true,
+			confirmButtonColor: '#3085d6',
+			cancelButtonColor: '#d33',
+			confirmButtontext: 'Confirmar',
+			}).then((result) => {
+			if (result.isConfirmed) {
+				window.location='/eliminar'+id
+			}
+			})
+		}
+	</script>
+</body>
+</html>
